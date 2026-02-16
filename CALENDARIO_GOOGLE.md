@@ -60,7 +60,27 @@ VITE_GOOGLE_CALENDAR_ID=xxxxxxxx@group.calendar.google.com
 
 ---
 
-## 5. Resumo do que me passar
+## 5. Configurar na Vercel (deploy em produção)
+
+Se o site está hospedado na **Vercel**, as variáveis do `.env` **não** são enviadas automaticamente. É preciso configurá-las no painel:
+
+1. Acesse o projeto na [Vercel](https://vercel.com) e abra **Settings** (Configurações).
+2. No menu lateral, clique em **Environment Variables**.
+3. Adicione duas variáveis (com os **mesmos nomes** e os valores reais que você usa no `.env`):
+
+   | Nome | Valor |
+   |------|--------|
+   | `VITE_GOOGLE_CALENDAR_API_KEY` | sua chave da API do Google |
+   | `VITE_GOOGLE_CALENDAR_ID` | `primary` ou o ID do calendário (ex.: `xxxxx@group.calendar.google.com`) |
+
+4. Marque o ambiente **Production** (e, se quiser, Preview e Development).
+5. Salve e faça um **novo deploy** (Redeploy) do projeto para as variáveis passarem a valer.
+
+Depois disso, a página de Eventos no site publicado passará a carregar o calendário.
+
+---
+
+## 6. Resumo do que me passar
 
 Se quiser que eu te ajude a conferir ou a colocar no código, me envie **apenas**:
 

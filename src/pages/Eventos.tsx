@@ -162,7 +162,7 @@ export default function Eventos() {
 
   const fetchEvents = useCallback(async () => {
     if (!API_KEY || !CALENDAR_ID) {
-      setError('Calendário não configurado. Defina VITE_GOOGLE_CALENDAR_API_KEY e VITE_GOOGLE_CALENDAR_ID no .env');
+      setError('Calendário ainda não configurado. Em breve você poderá ver os eventos aqui.');
       setEvents([]);
       return;
     }
