@@ -1,6 +1,6 @@
 export default function Igreja() {
   return (
-    <div className="min-h-screen bg-[#F5F0E8] pt-24 pb-40 md:pt-28 md:pb-12">
+    <div className="min-h-screen bg-[#F5F0E8] pt-24 pb-32 md:pt-28 md:pb-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         {/* Hero / título da página */}
         <header className="mb-12 text-center md:mb-16">
@@ -12,7 +12,7 @@ export default function Igreja() {
           </p>
         </header>
 
-        <article className="flex flex-col gap-8 md:gap-12">
+        <article className="flex flex-col gap-8 md:gap-12 mb-16 md:mb-24">
           {/* Seção: Origem */}
           <section className="rounded-2xl border border-[#E8E0D5] bg-white p-6 shadow-sm md:p-8">
             <div className="mb-4 flex items-center gap-3">

@@ -17,7 +17,7 @@ export function Footer() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 py-12 md:py-16 px-4">
+      <div className="relative z-10 pt-12 pb-28 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Bottom section */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">

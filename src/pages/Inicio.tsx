@@ -11,7 +11,7 @@ import { Igreja } from '../components/igreja/Igreja';
  */
 export function Inicio() {
   return (
-    <div className="bg-white pb-20 lg:pb-0">
+    <div className="bg-white pb-32 lg:pb-24">
       <Apresentacao />
       <div id="pastor">
         <Pastor />

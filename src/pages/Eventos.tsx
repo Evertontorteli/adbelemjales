@@ -196,7 +196,7 @@ export default function Eventos() {
   const years = Array.from({ length: 5 }, (_, i) => now.getFullYear() - 2 + i);
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] pt-24 pb-40 md:pt-28 md:pb-12">
+    <div className="min-h-screen bg-[#F5F0E8] pt-24 pb-40 md:pt-28 md:pb-24">
       <div className="max-w-5xl mx-auto px-4">
         <header className="mb-8 text-center">
           <h1 className="text-3xl md:text-4xl font-semibold text-[#5C4033] tracking-tight">
@@ -282,6 +282,9 @@ export default function Eventos() {
             })}
           </div>
         )}
+
+        {/* Espaço no final: no mobile a rolagem desce até a barra de botões */}
+        <div className="h-40 md:h-24 w-full flex-shrink-0" aria-hidden />
       </div>
     </div>
   );
