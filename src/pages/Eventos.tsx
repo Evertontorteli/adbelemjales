@@ -209,17 +209,17 @@ export default function Eventos() {
           </p>
         </header>
 
-        {/* Filtro: mês e ano — card de controle */}
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-4 rounded-2xl border border-[#E8E0D5] bg-white px-6 py-4 shadow-sm">
-          <span className="text-sm font-medium text-[#5C4033]">Filtrar por:</span>
+        {/* Filtro: mês e ano — padronizado com o sistema */}
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-4 px-6 py-5">
+          <span className="text-sm font-semibold text-[#5C4033] tracking-wide">Filtrar por:</span>
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2">
-              <label htmlFor="month" className="sr-only">Mês</label>
+              <label htmlFor="month" className="text-sm font-medium text-[#5C4033]">Mês</label>
               <select
                 id="month"
                 value={month}
                 onChange={(e) => setMonth(Number(e.target.value))}
-                className="rounded-xl border border-[#E8E0D5] bg-[#F5F0E8]/50 px-4 py-2.5 text-[#333333] focus:outline-none focus:ring-2 focus:ring-[#8B7355]/40 focus:ring-offset-2"
+                className="rounded-full border border-[#8B7355]/30 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#1a1a1a] px-6 py-3 pr-10 transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#5C4033]/30 focus:ring-offset-2"
               >
                 {MONTHS.map((m, i) => (
                   <option key={m} value={i}>{m}</option>
@@ -227,12 +227,12 @@ export default function Eventos() {
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label htmlFor="year" className="sr-only">Ano</label>
+              <label htmlFor="year" className="text-sm font-medium text-[#5C4033]">Ano</label>
               <select
                 id="year"
                 value={year}
                 onChange={(e) => setYear(Number(e.target.value))}
-                className="rounded-xl border border-[#E8E0D5] bg-[#F5F0E8]/50 px-4 py-2.5 text-[#333333] focus:outline-none focus:ring-2 focus:ring-[#8B7355]/40 focus:ring-offset-2"
+                className="rounded-full border border-[#8B7355]/30 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#1a1a1a] px-6 py-3 pr-10 transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#5C4033]/30 focus:ring-offset-2"
               >
                 {years.map((y) => (
                   <option key={y} value={y}>{y}</option>
