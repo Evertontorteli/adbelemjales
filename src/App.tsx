@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Inicio } from './pages/Inicio';
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/doacao" element={<DoacaoPage />} />
         <Route path="/departamentos" element={<DepartamentosPage />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }

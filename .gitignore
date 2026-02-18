@@ -9,6 +9,7 @@ dist/
 .env
 .env.local
 .env.*.local
+Import.env
 
 # IDE / OS
 .DS_Store
