@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Calendar as CalendarIcon, MapPin, Clock, Loader2, AlertCircle } from 'lucide-react';
+import { Calendar as CalendarIcon, MapPin, Loader2, AlertCircle, ArrowUpRight } from 'lucide-react';
 
 const API_KEY = import.meta.env?.VITE_GOOGLE_CALENDAR_API_KEY ?? '';
 const CALENDAR_ID = import.meta.env?.VITE_GOOGLE_CALENDAR_ID ?? '';
@@ -34,8 +34,8 @@ function getDayMonth(dateStr: string | undefined): { day: string; month: string 
     const d = new Date(dateStr);
     if (Number.isNaN(d.getTime())) return { day: '—', month: '' };
     return {
-      day: d.getDate().toString().padStart(2, '0'),
-      month: d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', ''),
+      day: d.getDate().toString(),
+      month: d.toLocaleDateString('pt-BR', { month: 'long' }),
     };
   } catch {
     return { day: '—', month: '' };
@@ -76,6 +76,13 @@ const MONTHS = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
 ];
 
+const CARD_BG_COLORS = [
+  'bg-[#FEF7E6]',   // amarelo suave
+  'bg-[#E8F0E8]',   // verde muito claro
+  'bg-[#F0E8F5]',   // lavanda suave
+  'bg-[#E8EEF5]',   // azul muito claro
+];
+
 function EventCard({
   event,
   start,
@@ -84,6 +91,7 @@ function EventCard({
   month,
   imageUrl,
   formatEventDate,
+  colorIndex = 0,
 }: {
   event: GoogleCalendarEvent;
   start: string | undefined;
@@ -92,15 +100,17 @@ function EventCard({
   month: string;
   imageUrl: string | null;
   formatEventDate: (dateStr: string | undefined, isAllDay: boolean) => string;
+  colorIndex?: number;
 }) {
   const [imgError, setImgError] = useState(false);
   const showImage = imageUrl != null && !imgError;
+  const bgClass = CARD_BG_COLORS[colorIndex % CARD_BG_COLORS.length];
 
   return (
-    <article className="group overflow-hidden rounded-2xl border border-[#E8E0D5] bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
-      {/* Área superior: imagem da API em formato redondo + badge da data */}
-      <div className="relative flex flex-col items-center pt-8 pb-4">
-        <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-lg ring-2 ring-[#E8E0D5]">
+    <article className={`group flex overflow-hidden rounded-2xl border border-[#E8E0D5]/60 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 ${bgClass}`}>
+      {/* Canto esquerdo: quadro com a imagem do evento */}
+      <div className="flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 p-3 flex items-center justify-center">
+        <div className="w-full h-full overflow-hidden rounded-xl border border-white/50 shadow-md bg-white/50">
           {showImage ? (
             <img
               src={imageUrl!}
@@ -110,41 +120,33 @@ function EventCard({
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8B7355]/30 to-[#5C4033]/20">
-              <CalendarIcon className="h-12 w-12 text-[#8B7355]/60" aria-hidden />
+              <CalendarIcon className="h-10 w-10 text-[#8B7355]/60" aria-hidden />
             </div>
           )}
         </div>
-        <div className="mt-3 flex flex-col items-center rounded-lg bg-[#F5F0E8] px-3 py-1.5">
-          <span className="text-sm font-bold leading-none text-[#5C4033]">{day}</span>
-          <span className="text-xs font-medium uppercase tracking-wider text-[#8B7355]">{month}</span>
-        </div>
       </div>
-      {/* Conteúdo do card */}
-      <div className="p-5 pt-2">
-        <h2 className="text-lg font-semibold leading-snug text-[#333333]">
-          {event.summary || 'Sem título'}
-        </h2>
-        <p className="mt-2 flex items-center gap-2 text-sm text-[#666666]">
-          <Clock className="h-4 w-4 shrink-0 text-[#8B7355]" />
+      {/* Lado direito: nome do evento e, embaixo, dia e data */}
+      <div className="flex-1 min-w-0 flex flex-col justify-center py-4 pr-4 pl-1">
+        <div className="flex items-start justify-between gap-2">
+          <h2 className="text-base sm:text-lg font-semibold leading-snug text-[#333333]">
+            {event.summary || 'Sem título'}
+          </h2>
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-white/70 flex items-center justify-center border border-[#E8E0D5]/80">
+            <ArrowUpRight className="h-4 w-4 text-[#5C4033]" aria-hidden />
+          </span>
+        </div>
+        <p className="mt-2 flex items-center gap-2 text-sm text-[#555555]">
+          <span className="font-semibold text-[#5C4033]">{day} de {month}</span>
+          <span className="text-[#8B7355]/80">·</span>
           {formatEventDate(start, isAllDay)}
           {!isAllDay && event.end?.dateTime && (
             <span> – {new Date(event.end.dateTime).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</span>
           )}
         </p>
         {event.location && (
-          <p className="mt-1.5 flex items-start gap-2 text-sm text-[#666666]">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#8B7355]" />
-            <span className="block overflow-hidden text-ellipsis whitespace-nowrap">{event.location}</span>
-          </p>
-        )}
-        {event.description && (
-          <p className="mt-3 text-sm leading-relaxed text-[#555555] overflow-hidden max-h-[4.5em]">
-            {event.description
-              .replace(/!\[[^\]]*\]\([^)]+\)|<img[^>]*>/gi, '')
-              .replace(/<[^>]+>/g, ' ')
-              .trim()
-              .slice(0, 180)}
-            {(event.description?.length ?? 0) > 180 ? '…' : ''}
+          <p className="mt-1 flex items-center gap-2 text-sm text-[#555555]">
+            <MapPin className="h-3.5 w-3.5 shrink-0 text-[#8B7355]" />
+            <span className="truncate">{event.location}</span>
           </p>
         )}
       </div>
@@ -262,7 +264,7 @@ export default function Eventos() {
 
         {!loading && events.length > 0 && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {events.map((event) => {
+            {events.map((event, index) => {
               const start = event.start?.dateTime || event.start?.date;
               const isAllDay = !!event.start?.date;
               const imageUrl = getEventImageUrl(event);
@@ -277,6 +279,7 @@ export default function Eventos() {
                   month={month}
                   imageUrl={imageUrl}
                   formatEventDate={formatEventDate}
+                  colorIndex={index}
                 />
               );
             })}
