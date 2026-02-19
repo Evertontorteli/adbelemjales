@@ -1,0 +1,6 @@
+Para o QR Code do PIX aparecer na página de Doações:
+
+1. Salve a imagem do QR Code PIX com o nome:  qrcode_pix.png
+2. Coloque o arquivo nesta pasta (static/).
+
+O site vai exibir a imagem em /qrcode_pix.png.

@@ -12,6 +12,7 @@ const BANCO_NOME = 'Itaú';
 export function Doacoes() {
   const [copiedPix, setCopiedPix] = useState(false);
   const [copiedBanco, setCopiedBanco] = useState(false);
+  const [pixImageError, setPixImageError] = useState(false);
 
   const copyPix = () => {
     navigator.clipboard.writeText(PIX_KEY_CNPJ);
@@ -62,12 +63,17 @@ export function Doacoes() {
                 <span className="text-sm font-medium uppercase tracking-wider">PIX</span>
               </div>
               <div className="flex-1 flex flex-col items-center justify-center">
-                <div className="w-44 h-44 md:w-52 md:h-52 mb-6 bg-white rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
-                  <img
-                    alt="PIX QR Code"
-                    className="w-full h-full object-contain p-3"
-                    src={PIX_QRCODE_SRC}
-                  />
+                <div className="w-44 h-44 md:w-52 md:h-52 mb-6 bg-white rounded-2xl overflow-hidden shadow-lg flex-shrink-0 flex items-center justify-center">
+                  {pixImageError ? (
+                    <p className="text-[#374151]/70 text-xs text-center p-3">Adicione a imagem <strong>qrcode_pix.png</strong> na pasta <strong>static/</strong> do projeto</p>
+                  ) : (
+                    <img
+                      alt="PIX QR Code"
+                      className="w-full h-full object-contain p-3"
+                      src={PIX_QRCODE_SRC}
+                      onError={() => setPixImageError(true)}
+                    />
+                  )}
                 </div>
                 <p className="text-white/95 text-sm font-mono mb-4 break-all text-center">{PIX_KEY_CNPJ}</p>
                 <button
