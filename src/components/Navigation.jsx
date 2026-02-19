@@ -77,17 +77,17 @@ export function Navigation() {
                 <div className="transform group-hover:scale-110 transition-transform duration-300">
                   <LogoSmall />
                 </div>
-                <span className="text-[#484440] tracking-wide">AD BELÉM JALES</span>
+                <span className="text-[#374151] tracking-wide">AD BELÉM JALES</span>
               </Link>
               <div className="flex items-center gap-1">
                 {menuItemsDesktop.map((item) => (
                   <Link
                     key={item.to}
                     to={item.to}
-                    className="px-4 py-2 text-[#484440] hover:text-[#484440] transition-all duration-300 relative group"
+                    className="px-4 py-2 text-[#374151] hover:text-[#374151] transition-all duration-300 relative group"
                   >
                     <span className="relative z-10">{item.label}</span>
-                    <span className="absolute inset-0 bg-[#E8E0D5]/60 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
+                    <span className="absolute inset-0 bg-[#e5e7eb]/60 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
                   </Link>
                 ))}
               </div>
@@ -111,15 +111,15 @@ export function Navigation() {
             onClick={() => setIsMaisOpen(false)}
           />
           <div
-            className="absolute w-[calc(100%-2rem)] max-w-sm rounded-2xl border border-[#E8E0D5] bg-white p-6 shadow-xl"
+            className="absolute w-[calc(100%-2rem)] max-w-sm rounded-2xl border border-[#e5e7eb] bg-white p-6 shadow-xl"
             style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)', zIndex: 100000 }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-medium text-[#484440]">Mais opções</h2>
+              <h2 className="text-xl font-medium text-[#374151]">Mais opções</h2>
               <button
                 type="button"
-                className="rounded-lg p-2 text-[#484440] hover:bg-[#E8E0D5]/50"
+                className="rounded-lg p-2 text-[#374151] hover:bg-[#e5e7eb]/50"
                 aria-label="Fechar"
                 onClick={() => setIsMaisOpen(false)}
               >
@@ -134,10 +134,10 @@ export function Navigation() {
                     key={item.to}
                     to={item.to}
                     onClick={handleLinkClick}
-                    className="flex items-center gap-4 rounded-xl border border-[#E8E0D5] bg-[#F5F0E8]/50 py-4 px-5 text-[#484440] transition-colors hover:bg-[#E8E0D5]/70 active:bg-[#E8E0D5]"
+                    className="flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-[#F5F0E8]/50 py-4 px-5 text-[#374151] transition-colors hover:bg-[#e5e7eb]/70 active:bg-[#e5e7eb]"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#8B7355]/20">
-                      <Icon className="h-6 w-6 text-[#484440]" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#6b7280]/20">
+                      <Icon className="h-6 w-6 text-[#374151]" />
                     </div>
                     <span className="font-medium">{item.label}</span>
                   </Link>
@@ -149,7 +149,7 @@ export function Navigation() {
       )}
 
       {!isDesktop && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#E8E0D5] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] safe-area-pb pt-3 pb-4 px-3">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e5e7eb] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] safe-area-pb pt-3 pb-4 px-3">
           <div className="flex items-stretch max-w-lg mx-auto">
             {menuItemsMobileMain.map((item) => {
               const Icon = item.Icon;
@@ -158,7 +158,7 @@ export function Navigation() {
                   key={item.to}
                   to={item.to}
                   onClick={handleLinkClick}
-                  className="flex-1 py-3 px-2 flex flex-col items-center gap-1.5 text-sm font-medium text-[#484440] hover:text-[#484440] active:bg-[#E8E0D5]/30 transition-colors"
+                  className="flex-1 py-3 px-2 flex flex-col items-center gap-1.5 text-sm font-medium text-[#374151] hover:text-[#374151] active:bg-[#e5e7eb]/30 transition-colors"
                 >
                   <Icon className="w-5 h-5 shrink-0" />
                   <span>{item.label}</span>
@@ -173,7 +173,7 @@ export function Navigation() {
                 e.stopPropagation();
                 setIsMaisOpen(true);
               }}
-              className="flex-1 py-3 px-2 flex flex-col items-center gap-1.5 text-sm font-medium text-[#484440] hover:text-[#484440] active:bg-[#E8E0D5]/30 transition-colors touch-manipulation"
+              className="flex-1 py-3 px-2 flex flex-col items-center gap-1.5 text-sm font-medium text-[#374151] hover:text-[#374151] active:bg-[#e5e7eb]/30 transition-colors touch-manipulation"
             >
               <ChevronUp className="w-5 h-5 shrink-0" />
               <span>Mais</span>

@@ -115,37 +115,41 @@ function EventCard({ event, start, isAllDay, imageUrl, formatEventDateLong, form
 
   return (
     <article
-      className="flex flex-col overflow-hidden rounded-3xl bg-white p-4 w-full max-w-[343px] min-h-[440px] transition-all duration-300 hover:shadow-xl shadow-lg border border-[#E8E0D5]"
+      className="flex flex-col overflow-hidden rounded-2xl bg-white p-4 w-full min-h-0 transition-all duration-300 hover:shadow-xl shadow-lg border border-[#e5e7eb]/80"
     >
-      {showImage ? (
-        <div className="w-[343px] h-[120px] -mx-4 rounded-xl overflow-hidden bg-[#F5F0E8] mb-1 flex justify-end items-stretch">
-          <img
-            src={imageUrl}
-            alt=""
-            className="h-full w-auto max-w-full object-cover object-right"
-            referrerPolicy="no-referrer"
-            onError={() => setImgError(true)}
-          />
+      <div className="flex items-start gap-3">
+        <div className="flex-1 min-w-0">
+          <h2 className="text-[26px] font-bold text-[#374151] leading-tight mt-0">
+            {event.summary || 'Sem título'}
+          </h2>
+          {event.location && (
+            <p className="mt-[24px] text-[#374151] text-sm leading-snug line-clamp-2">
+              {event.location}
+            </p>
+          )}
         </div>
-      ) : (
-        <div className="w-[343px] h-[120px] -mx-4 rounded-xl bg-[#F5F0E8] flex items-center justify-end pr-4 mb-1">
-          <CalendarIcon className="h-10 w-10 text-[#8B7355]/60" aria-hidden />
-        </div>
-      )}
-      <h2 className="text-[26px] font-bold text-[#484440] leading-tight mt-0">
-        {event.summary || 'Sem título'}
-      </h2>
-      {event.location && (
-        <p className="mt-3 text-[#484440] text-sm leading-snug line-clamp-2">
-          {event.location}
-        </p>
-      )}
-      <div className="mt-auto pt-2 flex items-center gap-2 border-t border-[#E8E0D5]">
-        <p className="text-sm font-semibold text-[#484440]">
+        {showImage ? (
+          <div className="w-[100px] h-[100px] shrink-0 rounded-xl overflow-hidden bg-[#f3f4f6]">
+            <img
+              src={imageUrl}
+              alt=""
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+              onError={() => setImgError(true)}
+            />
+          </div>
+        ) : (
+          <div className="w-[100px] h-[100px] shrink-0 rounded-xl bg-[#f3f4f6] flex items-center justify-center">
+            <CalendarIcon className="h-10 w-10 text-[#6b7280]/60" aria-hidden />
+          </div>
+        )}
+      </div>
+      <div className="mt-3 pt-2 flex items-center justify-between gap-2 border-t border-[#e5e7eb]">
+        <p className="text-sm font-semibold text-[#374151]">
           {formatEventDateLong(start)}
         </p>
         {timeLabel && (
-          <p className="text-sm font-semibold text-[#484440] shrink-0">
+          <p className="text-sm font-semibold text-[#374151] shrink-0 ml-auto">
             {timeLabel}
           </p>
         )}
@@ -221,37 +225,37 @@ export default function Eventos() {
     <div className="min-h-screen bg-white pt-24 pb-40 md:pt-28 md:pb-24">
       <div className="max-w-5xl mx-auto px-4">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#484440] tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#374151] tracking-tight">
             Eventos
           </h1>
-          <p className="mt-2 text-[#484440] text-sm md:text-base">
+          <p className="mt-2 text-[#374151] text-sm md:text-base">
             Confira a programação da igreja
           </p>
         </header>
 
         <div className="mb-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-6 py-4">
-          <span className="text-sm font-semibold text-[#484440] tracking-wide shrink-0">Filtrar por:</span>
-          <div className="flex flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center sm:justify-start">
-            <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 sm:flex-initial sm:min-w-0">
-              <label htmlFor="month" className="text-sm font-medium text-[#484440] shrink-0">Mês</label>
+          <span className="text-sm font-semibold text-[#374151] tracking-wide shrink-0">Filtrar por:</span>
+          <div className="flex flex-nowrap items-center gap-3 sm:gap-4 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-2">
+              <label htmlFor="month" className="text-sm font-medium text-[#374151] shrink-0">Mês</label>
               <select
                 id="month"
                 value={month}
                 onChange={(e) => setMonth(Number(e.target.value))}
-                className="rounded-full border border-[#8B7355]/30 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#484440] text-sm pl-3 pr-8 py-2.5 sm:py-3 h-9 sm:h-auto min-w-0 w-full max-w-[7rem] sm:max-w-[8rem] transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#484440]/30 focus:ring-offset-2"
+                className="rounded-full border border-[#6b7280]/30 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] text-sm pl-4 pr-9 py-2.5 sm:py-3 h-10 min-w-[10rem] w-auto transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2"
               >
                 {MONTHS.map((m, i) => (
                   <option key={m} value={i}>{m}</option>
                 ))}
               </select>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-              <label htmlFor="year" className="text-sm font-medium text-[#484440] shrink-0">Ano</label>
+            <div className="flex items-center gap-2">
+              <label htmlFor="year" className="text-sm font-medium text-[#374151] shrink-0">Ano</label>
               <select
                 id="year"
                 value={year}
                 onChange={(e) => setYear(Number(e.target.value))}
-                className="rounded-full border border-[#8B7355]/30 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#484440] text-sm pl-3 pr-8 py-2.5 sm:py-3 h-9 sm:h-auto w-16 sm:w-20 min-w-[4rem] transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#484440]/30 focus:ring-offset-2"
+                className="rounded-full border border-[#6b7280]/30 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] text-sm pl-4 pr-9 py-2.5 sm:py-3 h-10 min-w-[5.5rem] w-auto transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2"
               >
                 {years.map((y) => (
                   <option key={y} value={y}>{y}</option>
@@ -263,8 +267,8 @@ export default function Eventos() {
 
         {loading && (
           <div className="flex flex-col items-center justify-center gap-3 py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-[#8B7355]" aria-hidden />
-            <p className="text-sm text-[#484440]">Carregando eventos...</p>
+            <Loader2 className="h-8 w-8 animate-spin text-[#6b7280]" aria-hidden />
+            <p className="text-sm text-[#374151]">Carregando eventos...</p>
           </div>
         )}
 
@@ -276,13 +280,13 @@ export default function Eventos() {
         )}
 
         {!loading && !error && events.length === 0 && (
-          <p className="text-center text-[#484440] py-12">
+          <p className="text-center text-[#374151] py-12">
             Nenhum evento encontrado para {MONTHS[month]} de {year}.
           </p>
         )}
 
         {!loading && events.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {events.map((event) => {
               const start = event.start?.dateTime || event.start?.date;
               const isAllDay = !!event.start?.date;

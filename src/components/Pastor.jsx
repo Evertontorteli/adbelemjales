@@ -24,9 +24,9 @@ export function Pastor() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
           <div className="inline-block mb-4">
-            <span className="text-[#484440] tracking-widest uppercase text-sm">Nossa liderança</span>
+            <span className="text-[#374151] tracking-widest uppercase text-sm">Nossa liderança</span>
           </div>
-          <h2 className="text-[#484440] text-4xl md:text-6xl lg:text-7xl">
+          <h2 className="text-[#374151] text-4xl md:text-6xl lg:text-7xl">
             PASTOR LOCAL
           </h2>
         </div>
@@ -54,11 +54,11 @@ export function Pastor() {
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full ring-4 ring-white shadow-2xl pointer-events-none" style={{ boxShadow: '0 0 0 4px white, 0 25px 50px -12px rgba(0,0,0,0.25)' }} />
             </div>
             <div className="flex-1 text-center sm:text-left">
-              <div className="h-1 w-12 bg-gradient-to-r from-[#8B7355] to-[#5C4033] rounded-full mx-auto sm:mx-0 mb-4" />
-              <h3 className="text-[#484440] text-2xl md:text-3xl mb-4">
+              <div className="h-1 w-12 bg-gradient-to-r from-[#6b7280] to-[#4b5563] rounded-full mx-auto sm:mx-0 mb-4" />
+              <h3 className="text-[#374151] text-2xl md:text-3xl mb-4">
                 Palavra do Pastor
               </h3>
-              <div className="text-[#484440] leading-relaxed space-y-4 text-base md:text-lg mb-6">
+              <div className="text-[#374151] leading-relaxed space-y-4 text-base md:text-lg mb-6">
                 <p>
                   Estar à frente da Assembleia de Deus, Ministério do Belém, é um chamado que carrego no coração com profunda honra e gratidão. Mais do que uma responsabilidade, é uma missão de amor: servir, acolher e interceder por cada vida que chega em busca de consolo, direção ou simplesmente de um abraço que traga paz à alma. Nosso compromisso é caminhar lado a lado, oferecendo cuidado, escuta e esperança.
                 </p>
@@ -80,7 +80,7 @@ export function Pastor() {
                 href="https://instagram.com/pc_oliveira1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#484440] px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl border border-[#8B7355]/30"
+                className="inline-flex items-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl border border-[#6b7280]/30"
               >
                 <InstagramIcon />
                 <span>@pc_oliveira1</span>

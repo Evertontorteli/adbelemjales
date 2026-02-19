@@ -32,17 +32,17 @@ export default function Departamentos() {
   return (
     <div className="min-h-screen bg-white pt-24 pb-40 md:pt-28 md:pb-24">
       <div className="max-w-5xl mx-auto px-4 relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B7355]/8 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#5C4033]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#6b7280]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#4b5563]/5 rounded-full blur-3xl pointer-events-none" />
 
         <header className="text-center mb-20 md:mb-24 relative z-10">
-          <span className="text-[#484440] tracking-widest uppercase text-sm font-medium">
+          <span className="text-[#374151] tracking-widest uppercase text-sm font-medium">
             Ministérios
           </span>
-          <h1 className="text-[#484440] text-3xl md:text-5xl mt-2 mb-4 font-semibold tracking-tight">
+          <h1 className="text-[#374151] text-3xl md:text-5xl mt-2 mb-4 font-semibold tracking-tight">
             DEPARTAMENTOS
           </h1>
-          <p className="text-[#484440] text-lg max-w-2xl mx-auto mb-0">
+          <p className="text-[#374151] text-lg max-w-2xl mx-auto mb-0">
             Conheça os setores e ministérios que compõem a AD Belém Jales. Encontre seu lugar e use seus dons para servir.
           </p>
         </header>
@@ -53,19 +53,19 @@ export default function Departamentos() {
             return (
               <article
                 key={dept.id}
-                className="rounded-2xl border border-[#E8E0D5]/80 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col"
+                className="rounded-2xl border border-[#e5e7eb]/80 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col"
               >
                 <div
                   className="p-6 md:p-8 flex flex-col flex-1"
                   style={{ gap: '1.5rem' }}
                 >
                   <div>
-                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#484440]" aria-hidden />
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#374151]" aria-hidden />
                   </div>
-                  <h2 className="text-[#484440] text-lg md:text-xl font-semibold leading-tight">
+                  <h2 className="text-[#374151] text-lg md:text-xl font-semibold leading-tight">
                     {dept.title}
                   </h2>
-                  <p className="text-[#484440] text-base leading-relaxed">
+                  <p className="text-[#374151] text-base leading-relaxed">
                     {dept.description}
                   </p>
                 </div>
@@ -79,16 +79,16 @@ export default function Departamentos() {
           className="mt-16 mb-16 md:mb-24 text-center relative z-10 w-full"
           aria-label="Fale conosco"
         >
-          <div className="rounded-2xl border border-[#E8E0D5] bg-white px-10 py-12 md:px-14 md:py-16 shadow-md max-w-2xl mx-auto">
-            <h3 className="text-[#484440] text-xl md:text-2xl font-semibold mb-4">
+          <div className="rounded-2xl border border-[#e5e7eb] bg-white px-10 py-12 md:px-14 md:py-16 shadow-md max-w-2xl mx-auto">
+            <h3 className="text-[#374151] text-xl md:text-2xl font-semibold mb-4">
               Quer fazer parte de um ministério?
             </h3>
-            <p className="text-[#484440] text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+            <p className="text-[#374151] text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
               Entre em contato conosco e descubra como você pode servir e crescer em comunidade.
             </p>
             <a
               href="/#redes-sociais"
-              className="inline-flex items-center gap-2 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#484440] px-6 py-3 rounded-full transition-all shadow-lg border border-[#8B7355]/30"
+              className="inline-flex items-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all shadow-lg border border-[#6b7280]/30"
             >
               <MessageCircle className="w-5 h-5" />
               <span>Fale conosco</span>

@@ -23,7 +23,7 @@ export function Apresentacao() {
         <div
           className="absolute inset-0 opacity-90"
           style={{
-            background: 'linear-gradient(to bottom right, #FAF8F5 0%, #F2EDE8 35%, #E8E0D5 70%, #E0D8D0 100%)',
+            background: 'linear-gradient(to bottom right, #ffffff 0%, #f9fafb 35%, #f3f4f6 70%, #e5e7eb 100%)',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/5" />
@@ -36,33 +36,33 @@ export function Apresentacao() {
         <div className="mb-8 md:mb-10">
           <svg className="w-full max-w-4xl mx-auto drop-shadow-2xl" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1051 148">
             <g>
-              <path d={svgPaths.p304b7c80} fill="#484440" />
-              <path d={svgPaths.p8170a80} fill="#484440" />
-              <path d={svgPaths.p38f2ec80} fill="#484440" />
-              <path d={svgPaths.p341ae700} fill="#484440" />
-              <path d={svgPaths.p3cf14940} fill="#484440" />
-              <path d={svgPaths.p35520d80} fill="#484440" />
-              <path d={svgPaths.p26eb7b80} fill="#484440" />
-              <path d={svgPaths.p35290080} fill="#484440" />
-              <path d={svgPaths.p2835e770} fill="#484440" />
-              <path d={svgPaths.p28724580} fill="#484440" />
-              <path d={svgPaths.p222b9c20} fill="#484440" />
-              <path d={svgPaths.pf2e6e00} fill="#484440" />
+              <path d={svgPaths.p304b7c80} fill="#374151" />
+              <path d={svgPaths.p8170a80} fill="#374151" />
+              <path d={svgPaths.p38f2ec80} fill="#374151" />
+              <path d={svgPaths.p341ae700} fill="#374151" />
+              <path d={svgPaths.p3cf14940} fill="#374151" />
+              <path d={svgPaths.p35520d80} fill="#374151" />
+              <path d={svgPaths.p26eb7b80} fill="#374151" />
+              <path d={svgPaths.p35290080} fill="#374151" />
+              <path d={svgPaths.p2835e770} fill="#374151" />
+              <path d={svgPaths.p28724580} fill="#374151" />
+              <path d={svgPaths.p222b9c20} fill="#374151" />
+              <path d={svgPaths.pf2e6e00} fill="#374151" />
             </g>
           </svg>
         </div>
-        <h1 className="text-[#484440] text-3xl md:text-5xl lg:text-6xl tracking-wide mb-6 drop-shadow-lg">
+        <h1 className="text-[#374151] text-3xl md:text-5xl lg:text-6xl tracking-wide mb-6 drop-shadow-lg">
           LUGAR DE CURA E RECOMEÇOS
         </h1>
-        <p className="text-[#484440]/90 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+        <p className="text-[#374151]/90 text-lg md:text-xl max-w-2xl mx-auto mb-8">
           Seja bem-vindo à AD Belém Jales. Uma igreja de portas abertas para sua família.
         </p>
-        <div className="h-1 w-32 bg-[#484440]/40 mx-auto rounded-full" />
+        <div className="h-1 w-32 bg-[#374151]/40 mx-auto rounded-full" />
       </div>
 
       <a
         href="#pastor"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#484440]/80 hover:text-[#484440] transition-all duration-300 animate-bounce cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#374151]/80 hover:text-[#374151] transition-all duration-300 animate-bounce cursor-pointer"
       >
         <ChevronDown className="w-8 h-8" />
       </a>

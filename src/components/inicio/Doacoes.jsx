@@ -25,34 +25,34 @@ export function Doacoes() {
 
   const cardShadow =
     'rounded-2xl p-6 md:p-8 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_-12px_rgba(92,64,51,0.15)] transition-shadow duration-300';
-  const cardLight = `${cardShadow} bg-white border border-[#E8E0D5]/80`;
+  const cardLight = `${cardShadow} bg-white border border-[#e5e7eb]/80`;
 
   return (
     <section
       id="doacoes"
-      className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#FAF8F5] to-[#F0EBE3] relative overflow-hidden"
+      className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-[#F0EBE3] relative overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B7355]/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5C4033]/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#6b7280]/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#4b5563]/5 rounded-full blur-3xl" />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <span className="text-[#484440] tracking-widest uppercase text-sm font-medium">Seja Parte</span>
-          <h2 className="text-[#484440] text-3xl md:text-5xl mt-2 mb-8 font-semibold tracking-tight">
+          <span className="text-[#374151] tracking-widest uppercase text-sm font-medium">Seja Parte</span>
+          <h2 className="text-[#374151] text-3xl md:text-5xl mt-2 mb-8 font-semibold tracking-tight">
             DOAÇÕES
           </h2>
           <div
-            className={`max-w-2xl mx-auto border border-[#E8E0D5]/80 bg-white/90 backdrop-blur-sm ${cardShadow}`}
+            className={`max-w-2xl mx-auto border border-[#e5e7eb]/80 bg-white/90 backdrop-blur-sm ${cardShadow}`}
           >
-            <p className="text-[#484440] text-base md:text-lg leading-relaxed mb-3">
+            <p className="text-[#374151] text-base md:text-lg leading-relaxed mb-3">
               "Trazei todos os dízimos à casa do tesouro, para que haja mantimento na minha casa, e depois fazei prova de mim nisto, diz o Senhor dos Exércitos."
             </p>
-            <p className="text-[#484440] text-sm md:text-base font-medium">Malaquias 3:10</p>
+            <p className="text-[#374151] text-sm md:text-base font-medium">Malaquias 3:10</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch max-w-4xl mx-auto">
           <div
-            className={`flex flex-col ${cardShadow} overflow-hidden bg-gradient-to-br from-[#5C4033] to-[#6B5344] border border-[#5C4033]/30 p-0`}
+            className={`flex flex-col ${cardShadow} overflow-hidden bg-gradient-to-br from-[#4b5563] to-[#4b5563] border border-[#4b5563]/30 p-0`}
           >
             <div className="p-6 md:p-8 flex flex-col flex-1">
               <div className="inline-flex items-center gap-2 text-white/90 mb-6">
@@ -71,7 +71,7 @@ export function Doacoes() {
                 <button
                   type="button"
                   onClick={copyPix}
-                  className="inline-flex items-center gap-2 bg-white/95 hover:bg-white text-[#484440] px-5 py-2.5 rounded-xl transition-all text-sm font-medium shadow-md hover:shadow-lg active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 bg-white/95 hover:bg-white text-[#374151] px-5 py-2.5 rounded-xl transition-all text-sm font-medium shadow-md hover:shadow-lg active:scale-[0.98]"
                 >
                   {copiedPix ? (
                     <>
@@ -90,25 +90,25 @@ export function Doacoes() {
           </div>
 
           <div className={`flex flex-col ${cardLight}`}>
-            <div className="inline-flex items-center gap-2 text-[#484440] mb-6">
+            <div className="inline-flex items-center gap-2 text-[#374151] mb-6">
               <Building2 className="w-5 h-5" />
               <span className="text-sm font-medium uppercase tracking-wider">Conta bancária</span>
             </div>
-            <h3 className="text-xl font-semibold text-[#484440] mb-5">Conta Itaú</h3>
-            <dl className="space-y-4 text-[#484440] flex-1">
-              <div className="rounded-xl bg-[#F5F0E8]/80 p-4 border border-[#E8E0D5]/60">
-                <dt className="text-xs uppercase tracking-wider text-[#484440] mb-1">Agência</dt>
+            <h3 className="text-xl font-semibold text-[#374151] mb-5">Conta Itaú</h3>
+            <dl className="space-y-4 text-[#374151] flex-1">
+              <div className="rounded-xl bg-[#f3f4f6]/80 p-4 border border-[#e5e7eb]/60">
+                <dt className="text-xs uppercase tracking-wider text-[#374151] mb-1">Agência</dt>
                 <dd className="font-mono font-semibold text-lg">{BANCO_AGENCIA}</dd>
               </div>
-              <div className="rounded-xl bg-[#F5F0E8]/80 p-4 border border-[#E8E0D5]/60">
-                <dt className="text-xs uppercase tracking-wider text-[#484440] mb-1">Conta</dt>
+              <div className="rounded-xl bg-[#f3f4f6]/80 p-4 border border-[#e5e7eb]/60">
+                <dt className="text-xs uppercase tracking-wider text-[#374151] mb-1">Conta</dt>
                 <dd className="font-mono font-semibold text-lg">{BANCO_CONTA}</dd>
               </div>
             </dl>
             <button
               type="button"
               onClick={copyBanco}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8E0D5] bg-[#F5F0E8] px-5 py-2.5 text-sm font-medium text-[#484440] transition-all shadow-sm hover:bg-[#E8E0D5] hover:shadow-md active:scale-[0.98]"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-[#e5e7eb] bg-[#f3f4f6] px-5 py-2.5 text-sm font-medium text-[#374151] transition-all shadow-sm hover:bg-[#e5e7eb] hover:shadow-md active:scale-[0.98]"
             >
               {copiedBanco ? (
                 <>
