@@ -32,29 +32,17 @@ export function Pastor() {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <div className="relative bg-white rounded-3xl p-8 pt-28 sm:pt-8 sm:pl-40 md:pl-48 md:pr-12 md:py-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-visible">
-            {/* Foto: cabeça fora do círculo (acima), círculo mostra tórax */}
-            <div
-              className="absolute left-1/2 sm:left-0 top-0 sm:top-1/2 -translate-x-1/2 sm:-translate-y-1/2 -translate-y-1/2 z-10 shrink-0 overflow-visible w-40 sm:w-48 md:w-56"
-              style={{ height: '11.5rem' }}
-            >
-              <img
-                src="/pastor.png"
-                alt="Pastor local"
-                className="absolute inset-0 w-full h-full object-cover object-[50%_28%]"
-                style={{ height: '14rem', top: '-2.5rem' }}
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-40 sm:h-48 md:h-56 bg-white"
-                style={{
-                  WebkitMaskImage: 'radial-gradient(circle at 50% 100%, black 50%, white 50%)',
-                  maskImage: 'radial-gradient(circle at 50% 100%, black 50%, white 50%)',
-                }}
-              />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full ring-4 ring-white shadow-2xl pointer-events-none" style={{ boxShadow: '0 0 0 4px white, 0 25px 50px -12px rgba(0,0,0,0.25)' }} />
-            </div>
-            <div className="flex-1 text-center sm:text-left">
-              <div className="h-1 w-12 bg-gradient-to-r from-[#6b7280] to-[#4b5563] rounded-full mx-auto sm:mx-0 mb-4" />
+          <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden">
+            <div className="p-8 md:p-10 flex flex-col sm:flex-row items-center gap-8 sm:gap-10">
+              {/* Círculo: foto com enquadramento que mantém a cabeça inteira visível */}
+              <div className="shrink-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden ring-4 ring-white shadow-xl bg-gray-100">
+                <img
+                  src="/pastor.png"
+                  alt="Pastor local"
+                  className="w-full h-full object-cover object-[50%_35%]"
+                />
+              </div>
+            <div className="flex-1 text-center sm:text-left min-w-0">
               <h3 className="text-[#374151] text-2xl md:text-3xl mb-4">
                 Palavra do Pastor
               </h3>
@@ -88,6 +76,7 @@ export function Pastor() {
               </a>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

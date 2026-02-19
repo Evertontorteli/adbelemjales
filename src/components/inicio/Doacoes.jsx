@@ -1,6 +1,8 @@
-import imgPixQrcode from "../../assets/f67f7a25f56fe3b7098344ba3a0c74cada03c4df.png";
 import { Smartphone, Copy, Check, Building2 } from 'lucide-react';
 import { useState } from 'react';
+
+// Imagem do PIX: coloque qrcode_pix.png na pasta static/ para exibir o QR Code
+const PIX_QRCODE_SRC = '/qrcode_pix.png';
 
 const PIX_KEY_CNPJ = '53.218.798/0001-09';
 const BANCO_AGENCIA = '0614';
@@ -24,13 +26,13 @@ export function Doacoes() {
   };
 
   const cardShadow =
-    'rounded-2xl p-6 md:p-8 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_-12px_rgba(92,64,51,0.15)] transition-shadow duration-300';
+    'rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300';
   const cardLight = `${cardShadow} bg-white border border-[#e5e7eb]/80`;
 
   return (
     <section
       id="doacoes"
-      className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-[#F0EBE3] relative overflow-hidden"
+      className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-gray-100 relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#6b7280]/8 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#4b5563]/5 rounded-full blur-3xl" />
@@ -64,7 +66,7 @@ export function Doacoes() {
                   <img
                     alt="PIX QR Code"
                     className="w-full h-full object-contain p-3"
-                    src={imgPixQrcode}
+                    src={PIX_QRCODE_SRC}
                   />
                 </div>
                 <p className="text-white/95 text-sm font-mono mb-4 break-all text-center">{PIX_KEY_CNPJ}</p>

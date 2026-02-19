@@ -134,9 +134,9 @@ export function Navigation() {
                     key={item.to}
                     to={item.to}
                     onClick={handleLinkClick}
-                    className="flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-[#F5F0E8]/50 py-4 px-5 text-[#374151] transition-colors hover:bg-[#e5e7eb]/70 active:bg-[#e5e7eb]"
+                    className="flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-white py-4 px-5 text-[#374151] transition-colors hover:bg-gray-50 active:bg-gray-100"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#6b7280]/20">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100">
                       <Icon className="h-6 w-6 text-[#374151]" />
                     </div>
                     <span className="font-medium">{item.label}</span>
