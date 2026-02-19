@@ -1,4 +1,4 @@
-import imgPixQrcode from "figma:asset/f67f7a25f56fe3b7098344ba3a0c74cada03c4df.png";
+import imgPixQrcode from "../../assets/f67f7a25f56fe3b7098344ba3a0c74cada03c4df.png";
 import { Smartphone, Copy, Check, Building2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -36,22 +36,21 @@ export function Doacoes() {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5C4033]/5 rounded-full blur-3xl" />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <span className="text-[#5C4033] tracking-widest uppercase text-sm font-medium">Seja Parte</span>
-          <h2 className="text-[#5C4033] text-3xl md:text-5xl mt-2 mb-8 font-semibold tracking-tight">
+          <span className="text-[#484440] tracking-widest uppercase text-sm font-medium">Seja Parte</span>
+          <h2 className="text-[#484440] text-3xl md:text-5xl mt-2 mb-8 font-semibold tracking-tight">
             DOAÇÕES
           </h2>
           <div
             className={`max-w-2xl mx-auto border border-[#E8E0D5]/80 bg-white/90 backdrop-blur-sm ${cardShadow}`}
           >
-            <p className="text-[#333333] text-base md:text-lg leading-relaxed mb-3">
+            <p className="text-[#484440] text-base md:text-lg leading-relaxed mb-3">
               "Trazei todos os dízimos à casa do tesouro, para que haja mantimento na minha casa, e depois fazei prova de mim nisto, diz o Senhor dos Exércitos."
             </p>
-            <p className="text-[#5C4033] text-sm md:text-base font-medium">Malaquias 3:10</p>
+            <p className="text-[#484440] text-sm md:text-base font-medium">Malaquias 3:10</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch max-w-4xl mx-auto">
-          {/* Card PIX */}
           <div
             className={`flex flex-col ${cardShadow} overflow-hidden bg-gradient-to-br from-[#5C4033] to-[#6B5344] border border-[#5C4033]/30 p-0`}
           >
@@ -72,7 +71,7 @@ export function Doacoes() {
                 <button
                   type="button"
                   onClick={copyPix}
-                  className="inline-flex items-center gap-2 bg-white/95 hover:bg-white text-[#1a1a1a] px-5 py-2.5 rounded-xl transition-all text-sm font-medium shadow-md hover:shadow-lg active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 bg-white/95 hover:bg-white text-[#484440] px-5 py-2.5 rounded-xl transition-all text-sm font-medium shadow-md hover:shadow-lg active:scale-[0.98]"
                 >
                   {copiedPix ? (
                     <>
@@ -90,27 +89,26 @@ export function Doacoes() {
             </div>
           </div>
 
-          {/* Card Conta Itaú */}
           <div className={`flex flex-col ${cardLight}`}>
-            <div className="inline-flex items-center gap-2 text-[#5C4033] mb-6">
+            <div className="inline-flex items-center gap-2 text-[#484440] mb-6">
               <Building2 className="w-5 h-5" />
               <span className="text-sm font-medium uppercase tracking-wider">Conta bancária</span>
             </div>
-            <h3 className="text-xl font-semibold text-[#5C4033] mb-5">Conta Itaú</h3>
-            <dl className="space-y-4 text-[#333333] flex-1">
+            <h3 className="text-xl font-semibold text-[#484440] mb-5">Conta Itaú</h3>
+            <dl className="space-y-4 text-[#484440] flex-1">
               <div className="rounded-xl bg-[#F5F0E8]/80 p-4 border border-[#E8E0D5]/60">
-                <dt className="text-xs uppercase tracking-wider text-[#666666] mb-1">Agência</dt>
+                <dt className="text-xs uppercase tracking-wider text-[#484440] mb-1">Agência</dt>
                 <dd className="font-mono font-semibold text-lg">{BANCO_AGENCIA}</dd>
               </div>
               <div className="rounded-xl bg-[#F5F0E8]/80 p-4 border border-[#E8E0D5]/60">
-                <dt className="text-xs uppercase tracking-wider text-[#666666] mb-1">Conta</dt>
+                <dt className="text-xs uppercase tracking-wider text-[#484440] mb-1">Conta</dt>
                 <dd className="font-mono font-semibold text-lg">{BANCO_CONTA}</dd>
               </div>
             </dl>
             <button
               type="button"
               onClick={copyBanco}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8E0D5] bg-[#F5F0E8] px-5 py-2.5 text-sm font-medium text-[#333333] transition-all shadow-sm hover:bg-[#E8E0D5] hover:shadow-md active:scale-[0.98]"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-[#E8E0D5] bg-[#F5F0E8] px-5 py-2.5 text-sm font-medium text-[#484440] transition-all shadow-sm hover:bg-[#E8E0D5] hover:shadow-md active:scale-[0.98]"
             >
               {copiedBanco ? (
                 <>

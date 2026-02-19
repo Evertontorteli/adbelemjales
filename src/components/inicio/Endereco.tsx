@@ -14,12 +14,12 @@ export function Endereco() {
   return (
     <section
       id="endereco"
-      className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#F5F0E8] to-white relative overflow-hidden"
+      className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#F8F8F8] to-white relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-10">
-          <span className="text-[#5C4033] tracking-widest uppercase text-sm">Venha nos visitar</span>
-          <h2 className="text-[#5C4033] text-3xl md:text-5xl mt-2 mb-4">
+          <span className="text-[#484440] tracking-widest uppercase text-sm">Venha nos visitar</span>
+          <h2 className="text-[#484440] text-3xl md:text-5xl mt-2 mb-4">
             ENDEREÇO DA IGREJA
           </h2>
         </div>
@@ -35,9 +35,9 @@ export function Endereco() {
             <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
               <MapPin className="w-6 h-6 text-[#8B7355] shrink-0 mt-0.5" />
               <div>
-                <p className="text-[#333333] text-lg md:text-xl font-medium">{ENDERECO.rua}</p>
-                <p className="text-[#666666]">{ENDERECO.bairro} - {ENDERECO.cidade}</p>
-                <p className="text-[#999999] text-sm mt-1">{ENDERECO.referencia}</p>
+                <p className="text-[#484440] text-lg md:text-xl font-medium">{ENDERECO.rua}</p>
+                <p className="text-[#484440]">{ENDERECO.bairro} - {ENDERECO.cidade}</p>
+                <p className="text-[#484440] text-sm mt-1">{ENDERECO.referencia}</p>
               </div>
             </div>
             <a

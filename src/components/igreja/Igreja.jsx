@@ -1,9 +1,5 @@
 import { Church, MapPin } from 'lucide-react';
 
-/**
- * Seção Igreja - informações sobre a igreja e endereço.
- * Documento próprio para a aba "Igreja" do header.
- */
 const ENDERECO = {
   rua: 'Avenida Francisco Jalles, N° 3575',
   bairro: 'Vila Maria',
@@ -17,15 +13,15 @@ export function Igreja() {
   return (
     <section
       id="igreja"
-      className="py-16 md:py-24 px-4 bg-[#F5F0E8] relative overflow-hidden"
+      className="py-16 md:py-24 px-4 bg-[#F8F8F8] relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <span className="text-[#5C4033] tracking-widest uppercase text-sm">Conheça</span>
-          <h2 className="text-[#5C4033] text-3xl md:text-5xl mt-2 mb-4">
+          <span className="text-[#484440] tracking-widest uppercase text-sm">Conheça</span>
+          <h2 className="text-[#484440] text-3xl md:text-5xl mt-2 mb-4">
             IGREJA
           </h2>
-          <p className="text-[#666666] text-lg max-w-2xl mx-auto">
+          <p className="text-[#484440] text-lg max-w-2xl mx-auto">
             Nossa história, nossa casa e como nos encontrar.
           </p>
         </div>
@@ -33,24 +29,24 @@ export function Igreja() {
         <div className="bg-white rounded-2xl shadow-lg border border-[#E8E0D5] overflow-hidden">
           <div className="bg-[#E8E0D5] p-6 text-center border-b border-[#E8E0D5]">
             <div className="inline-flex items-center justify-center w-14 h-14 bg-[#8B7355]/20 rounded-full mb-4">
-              <Church className="w-7 h-7 text-[#5C4033]" />
+              <Church className="w-7 h-7 text-[#484440]" />
             </div>
-            <h3 className="text-[#1a1a1a] text-xl md:text-2xl font-medium">AD Belém – Templo Central</h3>
+            <h3 className="text-[#484440] text-xl md:text-2xl font-medium">AD Belém – Templo Central</h3>
           </div>
           <div className="p-6 md:p-8">
             <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
               <MapPin className="w-6 h-6 text-[#8B7355] shrink-0 mt-0.5" />
               <div>
-                <p className="text-[#333333] text-lg font-medium">{ENDERECO.rua}</p>
-                <p className="text-[#666666]">{ENDERECO.bairro} – {ENDERECO.cidade}</p>
-                <p className="text-[#999999] text-sm mt-1">{ENDERECO.referencia}</p>
+                <p className="text-[#484440] text-lg font-medium">{ENDERECO.rua}</p>
+                <p className="text-[#484440]">{ENDERECO.bairro} – {ENDERECO.cidade}</p>
+                <p className="text-[#484440] text-sm mt-1">{ENDERECO.referencia}</p>
               </div>
             </div>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#1a1a1a] px-6 py-3 rounded-full transition-all border border-[#8B7355]/30"
+              className="inline-flex items-center gap-2 bg-[#E8E0D5] hover:bg-[#D4C4B0] text-[#484440] px-6 py-3 rounded-full transition-all border border-[#8B7355]/30"
             >
               <MapPin className="w-5 h-5" />
               Como chegar

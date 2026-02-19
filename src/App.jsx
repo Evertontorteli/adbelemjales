@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navigation } from './components/Navigation';
-import { Inicio } from './pages/Inicio';
-import EventosPage from './pages/Eventos';
-import IgrejaPage from './pages/Igreja';
-import DoacaoPage from './pages/Doacao';
-import DepartamentosPage from './pages/Departamentos';
+import { Navigation } from './components/Navigation.jsx';
+import { Inicio } from './pages/Inicio.jsx';
+import EventosPage from './pages/Eventos.jsx';
+import IgrejaPage from './pages/Igreja.jsx';
+import DoacaoPage from './pages/Doacao.jsx';
+import DepartamentosPage from './pages/Departamentos.jsx';
 
 export default function App() {
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function App() {
         <Route path="/doacao" element={<DoacaoPage />} />
         <Route path="/departamentos" element={<DepartamentosPage />} />
       </Routes>
-      <Analytics />
     </BrowserRouter>
   );
 }
