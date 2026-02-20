@@ -4,9 +4,9 @@
  * URL: /evento/:id (rewrite para este handler)
  */
 
-const SITE_ORIGIN = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.SITE_ORIGIN || 'https://adbelemjales.com';
+// Sempre usar o domínio do site (adbelemjales.com). Não usar VERCEL_URL para evitar
+// que o redirect no celular leve para xxx.vercel.app em vez do domínio próprio.
+const SITE_ORIGIN = process.env.SITE_ORIGIN || process.env.VITE_SITE_ORIGIN || 'https://adbelemjales.com';
 
 function isImageAttachment(att) {
   if (att.mimeType?.startsWith('image/')) return true;
