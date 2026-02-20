@@ -37,7 +37,7 @@ export function Pastor() {
               {/* Círculo: foto com enquadramento que mantém a cabeça inteira visível */}
               <div className="shrink-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden ring-4 ring-white shadow-xl bg-gray-100">
                 <img
-                  src="/pastor.png"
+                  src="/static/pastor.png"
                   alt="Pastor local"
                   className="w-full h-full object-cover object-[50%_35%]"
                 />

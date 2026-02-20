@@ -4,7 +4,7 @@ import { ChevronUp, Home, Calendar, Heart, Church, Users, X } from 'lucide-react
 function LogoSmall() {
   return (
     <div className="relative size-10 shrink-0 flex items-center justify-center">
-      <img src="/LogoBleia.svg" alt="AD Belém Jales" className="block size-full object-contain" />
+      <img src="/static/LogoBleia.svg" alt="AD Belém Jales" className="block size-full object-contain" />
     </div>
   );
 }

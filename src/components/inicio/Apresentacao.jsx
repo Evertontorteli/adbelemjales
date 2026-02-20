@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 function CamadaX2() {
   return (
     <div className="relative size-[140px] md:size-[180px] animate-float flex items-center justify-center">
-      <img src="/LogoBleia.svg" alt="AD Belém Jales" className="block size-full object-contain drop-shadow-2xl" />
+      <img src="/static/LogoBleia.svg" alt="AD Belém Jales" className="block size-full object-contain drop-shadow-2xl" />
     </div>
   );
 }
@@ -51,11 +51,13 @@ export function Apresentacao() {
             </g>
           </svg>
         </div>
-        <h1 className="text-[#374151] text-3xl md:text-5xl lg:text-6xl tracking-wide mb-6 drop-shadow-lg">
+        <h1 className="text-[#374151] text-2xl sm:text-3xl md:text-5xl lg:text-6xl tracking-wide mb-6 drop-shadow-lg whitespace-nowrap text-center">
           LUGAR DE CURA E RECOMEÇOS
         </h1>
         <p className="text-[#374151]/90 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-          Seja bem-vindo à AD Belém Jales. Uma igreja de portas abertas para sua família.
+          Seja bem-vindo à AD Belém Jales.
+          <br />
+          Uma igreja de portas abertas para sua família.
         </p>
         <div className="h-1 w-32 bg-[#374151]/40 mx-auto rounded-full" />
       </div>
