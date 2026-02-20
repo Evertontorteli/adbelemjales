@@ -1,4 +1,4 @@
-import { Church, MapPin } from 'lucide-react';
+import { Church, MapPin, Clock } from 'lucide-react';
 
 const ENDERECO = {
   rua: 'Avenida Francisco Jalles, N° 3575',
@@ -34,23 +34,40 @@ export function Igreja() {
             <h3 className="text-[#374151] text-xl md:text-2xl font-medium">AD Belém – Templo Central</h3>
           </div>
           <div className="p-6 md:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
-              <MapPin className="w-6 h-6 text-[#6b7280] shrink-0 mt-0.5" />
-              <div>
-                <p className="text-[#374151] text-lg font-medium">{ENDERECO.rua}</p>
-                <p className="text-[#374151]">{ENDERECO.bairro} – {ENDERECO.cidade}</p>
-                <p className="text-[#374151] text-sm mt-1">{ENDERECO.referencia}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 gap-6">
+              <div className="min-w-0 order-2 md:order-1">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
+                  <MapPin className="w-6 h-6 text-[#6b7280] shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-[#374151] text-lg font-medium">{ENDERECO.rua}</p>
+                    <p className="text-[#374151]">{ENDERECO.bairro} – {ENDERECO.cidade}</p>
+                    <p className="text-[#374151] text-sm mt-1">{ENDERECO.referencia}</p>
+                  </div>
+                </div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
+                >
+                  <MapPin className="w-5 h-5" />
+                  Como chegar
+                </a>
+              </div>
+              <div className="md:border-l md:border-[#e5e7eb] md:pl-8 min-w-0 text-left order-1 md:order-2">
+                <div className="inline-flex items-center gap-2 text-[#374151] font-semibold text-lg mb-3">
+                  <Clock className="w-5 h-5 text-[#6b7280]" />
+                  Horário das nossas Programações
+                </div>
+                <div className="space-y-2 text-[#374151]">
+                  <p className="font-medium">Cultos</p>
+                  <p className="text-sm">Quinta às 20h</p>
+                  <p className="text-sm">Domingo às 18:30</p>
+                  <p className="font-medium mt-4">EBD</p>
+                  <p className="text-sm">Domingo às 09h</p>
+                </div>
               </div>
             </div>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
-            >
-              <MapPin className="w-5 h-5" />
-              Como chegar
-            </a>
           </div>
         </div>
       </div>
