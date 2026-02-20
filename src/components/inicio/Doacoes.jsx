@@ -1,8 +1,10 @@
 import { Smartphone, Copy, Check, Building2 } from 'lucide-react';
 import { useState } from 'react';
 
-// QR Code PIX: arquivo em static/qrcode_pix.png (servido em /static/qrcode_pix.png)
-const QRCODE_PIX_SRC = '/static/qrcode_pix.png';
+// QR Code PIX: nome do arquivo qrcode_pix.png na pasta static/
+const QRCODE_PIX_PRIMARY = '/static/qrcode_pix.png';
+const QRCODE_PIX_FALLBACK = '/qrcode_pix.png';
+const QRCODE_PIX_SRC = QRCODE_PIX_PRIMARY; // alias para compatibilidade
 
 const PIX_KEY_CNPJ = '53.218.798/0001-09';
 const BANCO_AGENCIA = '0614';
@@ -13,6 +15,7 @@ export function Doacoes() {
   const [copiedPix, setCopiedPix] = useState(false);
   const [copiedBanco, setCopiedBanco] = useState(false);
   const [pixImageError, setPixImageError] = useState(false);
+  const [pixSrc, setPixSrc] = useState(QRCODE_PIX_PRIMARY);
 
   const copyPix = () => {
     navigator.clipboard.writeText(PIX_KEY_CNPJ);
@@ -70,8 +73,14 @@ export function Doacoes() {
                     <img
                       alt="PIX QR Code"
                       className="w-full h-full object-contain p-3"
-                      src={QRCODE_PIX_SRC}
-                      onError={() => setPixImageError(true)}
+                      src={pixSrc}
+                      onError={() => {
+                        if (pixSrc === QRCODE_PIX_PRIMARY) {
+                          setPixSrc(QRCODE_PIX_FALLBACK);
+                        } else {
+                          setPixImageError(true);
+                        }
+                      }}
                     />
                   )}
                 </div>
