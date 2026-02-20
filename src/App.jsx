@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navigation } from './components/Navigation.jsx';
 import { Inicio } from './pages/Inicio.jsx';
 import EventosPage from './pages/Eventos.jsx';
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/doacao" element={<DoacaoPage />} />
         <Route path="/departamentos" element={<DepartamentosPage />} />
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
