@@ -149,7 +149,7 @@ export function Navigation() {
       )}
 
       {!isDesktop && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e5e7eb] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] safe-area-pb pt-3 pb-4 px-3">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e5e7eb] rounded-t-[2rem] shadow-[0_-4px_24px_rgba(0,0,0,0.12)] safe-area-pb pt-3 pb-4 px-3">
           <div className="flex items-stretch max-w-lg mx-auto">
             {menuItemsMobileMain.map((item) => {
               const Icon = item.Icon;

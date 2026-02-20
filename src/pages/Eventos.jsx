@@ -242,7 +242,7 @@ export default function Eventos() {
                 id="month"
                 value={month}
                 onChange={(e) => setMonth(Number(e.target.value))}
-                className="rounded-full border border-[#6b7280]/30 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] text-sm pl-4 pr-9 py-2.5 sm:py-3 h-10 min-w-[10rem] w-auto transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2"
+                className="rounded-full border border-[#6b7280]/30 bg-white hover:bg-gray-50 text-[#374151] text-sm pl-4 pr-9 py-3 min-h-[2.75rem] min-w-[10rem] w-auto leading-normal transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2 appearance-none"
               >
                 {MONTHS.map((m, i) => (
                   <option key={m} value={i}>{m}</option>
@@ -255,7 +255,7 @@ export default function Eventos() {
                 id="year"
                 value={year}
                 onChange={(e) => setYear(Number(e.target.value))}
-                className="rounded-full border border-[#6b7280]/30 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] text-sm pl-4 pr-9 py-2.5 sm:py-3 h-10 min-w-[5.5rem] w-auto transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2"
+                className="rounded-full border border-[#6b7280]/30 bg-white hover:bg-gray-50 text-[#374151] text-sm pl-4 pr-9 py-3 min-h-[2.75rem] min-w-[5.5rem] w-auto leading-normal transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#374151]/30 focus:ring-offset-2 appearance-none"
               >
                 {years.map((y) => (
                   <option key={y} value={y}>{y}</option>
