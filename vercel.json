@@ -3,6 +3,7 @@
   "outputDirectory": "build",
   "rewrites": [
     { "source": "/evento/(.*)", "destination": "/api/evento-preview?e=$1" },
+    { "source": "/static/:path*", "destination": "/static/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
