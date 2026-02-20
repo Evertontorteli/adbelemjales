@@ -1,12 +1,31 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SpeedInsights } from '@vercel/speed-insights/react';
+import { useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import { Navigation } from './components/Navigation.jsx';
 import { Inicio } from './pages/Inicio.jsx';
 import EventosPage from './pages/Eventos.jsx';
 import IgrejaPage from './pages/Igreja.jsx';
 import DoacaoPage from './pages/Doacao.jsx';
 import DepartamentosPage from './pages/Departamentos.jsx';
+
+function SpeedInsightsRouter() {
+  const location = useLocation();
+  const insightsRef = useRef(null);
+
+  useEffect(() => {
+    if (!insightsRef.current) {
+      insightsRef.current = injectSpeedInsights({ route: location.pathname });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (insightsRef.current?.setRoute) {
+      insightsRef.current.setRoute(location.pathname);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
 
 export default function App() {
   useEffect(() => {
@@ -26,7 +45,7 @@ export default function App() {
         <Route path="/doacao" element={<DoacaoPage />} />
         <Route path="/departamentos" element={<DepartamentosPage />} />
       </Routes>
-      <SpeedInsights />
+      <SpeedInsightsRouter />
     </BrowserRouter>
   );
 }
