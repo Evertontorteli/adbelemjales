@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Calendar as CalendarIcon, Loader2, AlertCircle } from 'lucide-react';
 
 function WhatsAppIcon({ className }) {
@@ -190,10 +191,15 @@ function getBadgeColorForCity(city) {
   return BADGE_COLORS[index];
 }
 
+function getEventShareUrl(event) {
+  if (typeof window === 'undefined' || !event?.id) return '';
+  return `${window.location.origin}/evento/${encodeURIComponent(event.id)}`;
+}
+
 function buildWhatsAppShareText(event, start, isAllDay, dateRangeLabel, formatTimeRange) {
   const title = event.summary || 'Evento';
   const timeLabel = formatTimeRange(start, event.end?.dateTime ?? event.end?.date, isAllDay);
-  const link = typeof window !== 'undefined' ? `${window.location.origin}/eventos` : '';
+  const link = getEventShareUrl(event) || (typeof window !== 'undefined' ? `${window.location.origin}/eventos` : '');
   const lines = [
     `*${title}*`,
     '',
@@ -221,6 +227,7 @@ function EventCard({ event, start, isAllDay, imageUrl, city, badgeColorClass, da
 
   return (
     <article
+      data-event-id={event.id || undefined}
       className="flex flex-col overflow-hidden rounded-2xl bg-white p-4 w-full min-h-0 transition-all duration-300 hover:shadow-xl shadow-lg border border-[#e5e7eb]/80"
     >
       {showBadge && (
@@ -349,6 +356,17 @@ export default function Eventos() {
   }, [fetchEvents]);
 
   const years = Array.from({ length: 5 }, (_, i) => now.getFullYear() - 2 + i);
+  const [searchParams] = useSearchParams();
+  const eventIdFromUrl = searchParams.get('e');
+
+  useEffect(() => {
+    if (!eventIdFromUrl || loading || events.length === 0) return;
+    const decoded = decodeURIComponent(eventIdFromUrl);
+    const found = events.some((ev) => ev.id === decoded);
+    if (!found) return;
+    const el = document.querySelector(`[data-event-id="${CSS.escape(decoded)}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [eventIdFromUrl, loading, events]);
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-40 md:pt-28 md:pb-24">

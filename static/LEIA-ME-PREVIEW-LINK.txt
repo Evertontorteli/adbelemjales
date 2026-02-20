@@ -1,0 +1,14 @@
+PREVIEW AO COMPARTILHAR LINK (WhatsApp, etc.)
+
+Para o link do site mostrar a logo da igreja quando alguém compartilha (como no YouTube),
+adicione uma imagem em:
+
+  static/logo-og.png
+
+Recomendações:
+- Formato: PNG ou JPG (WhatsApp não usa SVG no preview)
+- Tamanho sugerido: 1200 x 630 pixels (proporção de cartão)
+- Conteúdo: logo da igreja ou imagem de capa
+- Tamanho do arquivo: até 600 KB
+
+Se o domínio for outro, atualize as URLs em index.html nas meta tags og:image e twitter:image.
