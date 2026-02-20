@@ -46,7 +46,7 @@ export function Igreja() {
               href={`https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
             >
               <MapPin className="w-5 h-5" />
               Como chegar

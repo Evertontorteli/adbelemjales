@@ -1,8 +1,7 @@
 import { Smartphone, Copy, Check, Building2 } from 'lucide-react';
 import { useState } from 'react';
-
-// Imagem do PIX: coloque qrcode_pix.png na pasta static/ para exibir o QR Code
-const PIX_QRCODE_SRC = '/qrcode_pix.png';
+// Imagem do QR Code PIX (pasta static na raiz do projeto, nome exato: qrcode_pix.png)
+import qrcodePixImage from '../../../static/qrcode_pix.png';
 
 const PIX_KEY_CNPJ = '53.218.798/0001-09';
 const BANCO_AGENCIA = '0614';
@@ -70,7 +69,7 @@ export function Doacoes() {
                     <img
                       alt="PIX QR Code"
                       className="w-full h-full object-contain p-3"
-                      src={PIX_QRCODE_SRC}
+                      src={qrcodePixImage}
                       onError={() => setPixImageError(true)}
                     />
                   )}

@@ -35,7 +35,7 @@ export function MuralOracoes() {
             href="https://wa.me/5517999999999?text=Olá,%20gostaria%20de%20fazer%20um%20pedido%20de%20oração"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all shadow-lg border border-[#6b7280]/30"
+            className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all shadow-lg border border-[#6b7280]/30"
           >
             <Send className="w-5 h-5" />
             <span>Fazer pedido de oração</span>

@@ -42,22 +42,22 @@ export function Pastor() {
                   className="w-full h-full object-cover object-[50%_35%]"
                 />
               </div>
-            <div className="flex-1 text-center sm:text-left min-w-0">
+            <div className="flex-1 text-left min-w-0">
               <h3 className="text-[#374151] text-2xl md:text-3xl mb-4">
                 Palavra do Pastor
               </h3>
               <div className="text-[#374151] leading-relaxed space-y-4 text-base md:text-lg mb-6">
                 <p>
-                  Estar à frente da Assembleia de Deus, Ministério do Belém, é um chamado que carrego no coração com profunda honra e gratidão. Mais do que uma responsabilidade, é uma missão de amor: servir, acolher e interceder por cada vida que chega em busca de consolo, direção ou simplesmente de um abraço que traga paz à alma. Nosso compromisso é caminhar lado a lado, oferecendo cuidado, escuta e esperança.
+                  Estar à frente da Assembleia de Deus, Ministério do Belém, é um chamado que abraço com honra e gratidão. Meu compromisso é servir, acolher e interceder por cada pessoa que busca direção, consolo ou um lugar onde se sinta em casa.
                 </p>
                 <p>
-                  Trabalhamos com zelo e dedicação para construir um ambiente que seja verdadeiramente familiar, onde a graça de Deus se manifesta em cada detalhe e onde você possa fortalecer sua comunhão com o Senhor de forma leve, profunda e transformadora.
+                  Nossa igreja é construída com amor e dedicação para ser um ambiente familiar, onde a graça de Deus se manifesta e a comunhão com Ele se fortalece. O templo foi preparado para acolher toda a família, oferecendo espaço e cuidado para crianças, adolescentes, jovens e adultos, com iniciativas desenvolvidas com carinho, como a musicalização.
                 </p>
                 <p>
-                  Nosso templo foi preparado para acolher toda a sua família. Aqui, cada pessoa — da criança ao adulto — encontra seu lugar, seu propósito e o sentimento de pertencimento. Com muito carinho, desenvolvemos iniciativas como a musicalização para crianças, adolescentes, jovens e adultos, porque acreditamos que o louvor também é uma forma de expressar amor e fé.
+                  Acima de tudo, buscamos ser instrumentos de paz e transformação, refletindo os ensinamentos de Jesus em cada atitude. Convido você a caminhar conosco e a experimentar o poder transformador do amor de Deus.
                 </p>
                 <p>
-                  Acima de tudo, desejamos ser instrumentos de paz e transformação, refletindo os ensinamentos e o amor de Jesus em cada atitude. Convido você a caminhar conosco e a viver a experiência do poder restaurador do amor de Deus. Conte comigo. Juntos, seguiremos firmes nessa jornada de fé.
+                  Conte comigo. Juntos, seguiremos firmes nessa jornada de fé.
                 </p>
                 <p className="font-medium">
                   Com carinho,<br />
@@ -68,7 +68,7 @@ export function Pastor() {
                 href="https://instagram.com/pc_oliveira1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl border border-[#6b7280]/30"
+                className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl border border-[#6b7280]/30"
               >
                 <InstagramIcon />
                 <span>@pc_oliveira1</span>

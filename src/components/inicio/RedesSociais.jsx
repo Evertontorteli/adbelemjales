@@ -30,7 +30,7 @@ export function RedesSociais() {
                 href="https://instagram.com/adbelemjales"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
               >
                 Instagram
               </a>
@@ -38,7 +38,7 @@ export function RedesSociais() {
                 href="https://facebook.com/adbelemjales"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#e5e7eb] hover:bg-[#d1d5db] text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[#374151] px-6 py-3 rounded-full transition-all border border-[#6b7280]/30"
               >
                 Facebook
               </a>
