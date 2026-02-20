@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { injectSpeedInsights } from '@vercel/speed-insights';
+import { inject as injectAnalytics, pageview } from '@vercel/analytics';
 import { Navigation } from './components/Navigation.jsx';
 import { Inicio } from './pages/Inicio.jsx';
 import EventosPage from './pages/Eventos.jsx';
@@ -27,6 +28,24 @@ function SpeedInsightsRouter() {
   return null;
 }
 
+function VercelAnalytics() {
+  const location = useLocation();
+  const injected = useRef(false);
+
+  useEffect(() => {
+    if (!injected.current) {
+      injectAnalytics();
+      injected.current = true;
+    }
+  }, []);
+
+  useEffect(() => {
+    pageview({ path: location.pathname });
+  }, [location.pathname]);
+
+  return null;
+}
+
 export default function App() {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -46,6 +65,7 @@ export default function App() {
         <Route path="/departamentos" element={<DepartamentosPage />} />
       </Routes>
       <SpeedInsightsRouter />
+      <VercelAnalytics />
     </BrowserRouter>
   );
 }
