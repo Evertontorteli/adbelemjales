@@ -70,6 +70,32 @@ function formatEventDateLong(dateStr) {
   }
 }
 
+/** Retorna o mesmo dia em meia-noite (UTC) para comparar apenas a data. */
+function toCalendarDay(dateStr) {
+  const d = new Date(dateStr);
+  return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+/** Formata uma ou duas datas: se start e end forem em dias diferentes, exibe as duas. */
+function formatEventDateRangeLong(startStr, endStr, isAllDay) {
+  const startFormatted = formatEventDateLong(startStr);
+  if (!endStr || startFormatted === '—') return startFormatted;
+  try {
+    const startDay = toCalendarDay(startStr);
+    const endDate = new Date(endStr);
+    // No Google Calendar, all-day end é exclusivo (dia seguinte ao último)
+    const endDayUtc = isAllDay
+      ? Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()) - 86400000
+      : Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+    if (startDay >= endDayUtc) return startFormatted;
+    const lastDayDate = isAllDay ? (() => { const d = new Date(endStr); d.setUTCDate(d.getUTCDate() - 1); return d; })() : new Date(endStr);
+    const endFormatted = formatEventDateLong(lastDayDate.toISOString());
+    return `${startFormatted} a ${endFormatted}`;
+  } catch {
+    return startFormatted;
+  }
+}
+
 function formatTimeRange(start, end, isAllDay) {
   if (isAllDay || !start) return '';
   try {
@@ -116,15 +142,62 @@ const MONTHS = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
 ];
 
-function buildWhatsAppShareText(event, start, isAllDay, formatEventDateLong, formatTimeRange) {
+/** Extrai a cidade do endereço (ex.: "..., Palmeira d'Oeste - SP, ...", "Jales, SP" ou só "Jales"). */
+function getCityFromLocation(location) {
+  if (!location || !String(location).trim()) return null;
+  const s = String(location).trim();
+  // Padrão "Cidade - UF" no meio ou fim (ex.: Centro, Palmeira d'Oeste - SP, 15720-000)
+  const cityMinusUF = [...s.matchAll(/,\s*([^,]+?)\s*-\s*[A-Z]{2}\b/gi)];
+  if (cityMinusUF.length > 0) {
+    const city = cityMinusUF[cityMinusUF.length - 1][1].trim();
+    if (city.length > 0) return city;
+  }
+  // Padrão "Cidade/UF" (ex.: ..., Jales/SP)
+  const citySlashUF = [...s.matchAll(/,\s*([^,/]+?)\s*\/\s*[A-Z]{2}\b/gi)];
+  if (citySlashUF.length > 0) {
+    const city = citySlashUF[citySlashUF.length - 1][1].trim();
+    if (city.length > 0) return city;
+  }
+  const parts = s.split(',').map((p) => p.trim()).filter(Boolean);
+  // Apenas a cidade (ex.: "Jales" ou "Palmeira d'Oeste")
+  if (parts.length === 1) return parts[0];
+  // "Cidade, UF, Brasil" no fim: último é país, penúltimo é UF → cidade é o anterior à UF
+  if (parts.length >= 3 && /^[A-Z]{2}$/i.test(parts[parts.length - 2])) return parts[parts.length - 3];
+  // "Cidade, UF" no fim: último trecho é sigla de estado (2 letras) → cidade é o anterior
+  if (parts.length >= 2 && /^[A-Z]{2}$/i.test(parts[parts.length - 1])) return parts[parts.length - 2];
+  return parts[parts.length - 1];
+}
+
+const BADGE_COLORS = [
+  'bg-blue-100 text-blue-800',
+  'bg-emerald-100 text-emerald-800',
+  'bg-amber-100 text-amber-800',
+  'bg-violet-100 text-violet-800',
+  'bg-rose-100 text-rose-800',
+  'bg-sky-100 text-sky-800',
+  'bg-teal-100 text-teal-800',
+  'bg-orange-100 text-orange-800',
+  'bg-fuchsia-100 text-fuchsia-800',
+  'bg-lime-100 text-lime-800',
+];
+
+function getBadgeColorForCity(city) {
+  if (!city) return 'bg-[#e5e7eb] text-[#374151]';
+  let hash = 0;
+  const str = String(city).toLowerCase();
+  for (let i = 0; i < str.length; i++) hash = ((hash << 5) - hash) + str.charCodeAt(i) | 0;
+  const index = Math.abs(hash) % BADGE_COLORS.length;
+  return BADGE_COLORS[index];
+}
+
+function buildWhatsAppShareText(event, start, isAllDay, dateRangeLabel, formatTimeRange) {
   const title = event.summary || 'Evento';
-  const dateStr = formatEventDateLong(start);
   const timeLabel = formatTimeRange(start, event.end?.dateTime ?? event.end?.date, isAllDay);
   const link = typeof window !== 'undefined' ? `${window.location.origin}/eventos` : '';
   const lines = [
     `*${title}*`,
     '',
-    `📅 ${dateStr}`,
+    `📅 ${dateRangeLabel}`,
     ...(timeLabel ? [`🕐 ${timeLabel}`] : []),
     ...(event.location ? [`📍 ${event.location}`] : []),
     '',
@@ -133,30 +206,44 @@ function buildWhatsAppShareText(event, start, isAllDay, formatEventDateLong, for
   return lines.join('\n');
 }
 
-function EventCard({ event, start, isAllDay, imageUrl, formatEventDateLong, formatTimeRange }) {
+function EventCard({ event, start, isAllDay, imageUrl, city, badgeColorClass, dateRangeLabel, formatTimeRange }) {
   const [imgError, setImgError] = useState(false);
   const showImage = imageUrl != null && !imgError;
   const timeLabel = formatTimeRange(start, event.end?.dateTime ?? event.end?.date, isAllDay);
 
   const handleShareWhatsApp = () => {
-    const text = buildWhatsAppShareText(event, start, isAllDay, formatEventDateLong, formatTimeRange);
+    const text = buildWhatsAppShareText(event, start, isAllDay, dateRangeLabel, formatTimeRange);
     const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
+
+  const showBadge = city != null && String(city).trim() !== '';
 
   return (
     <article
       className="flex flex-col overflow-hidden rounded-2xl bg-white p-4 w-full min-h-0 transition-all duration-300 hover:shadow-xl shadow-lg border border-[#e5e7eb]/80"
     >
+      {showBadge && (
+        <div className="mb-2">
+          <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${badgeColorClass}`}>
+            {city}
+          </span>
+        </div>
+      )}
       <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0">
           <h2 className="text-[26px] font-bold text-[#374151] leading-tight mt-0">
             {event.summary || 'Sem título'}
           </h2>
           {event.location && (
-            <p className="mt-[24px] text-[#374151] text-sm leading-snug line-clamp-2">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-[24px] block text-[#374151] text-sm leading-snug line-clamp-2 underline decoration-[#6b7280]/50 underline-offset-2 hover:decoration-[#374151] transition-colors"
+            >
               {event.location}
-            </p>
+            </a>
           )}
         </div>
         {showImage ? (
@@ -177,7 +264,7 @@ function EventCard({ event, start, isAllDay, imageUrl, formatEventDateLong, form
       </div>
       <div className="mt-3 pt-2 flex items-center justify-between gap-2 border-t border-[#e5e7eb]">
         <p className="text-sm font-semibold text-[#374151]">
-          {formatEventDateLong(start)}
+          {dateRangeLabel}
         </p>
         {timeLabel && (
           <p className="text-sm font-semibold text-[#374151] shrink-0 ml-auto">
@@ -331,8 +418,12 @@ export default function Eventos() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {events.map((event) => {
               const start = event.start?.dateTime || event.start?.date;
+              const end = event.end?.dateTime || event.end?.date;
               const isAllDay = !!event.start?.date;
               const imageUrl = getEventImageUrl(event);
+              const city = getCityFromLocation(event.location);
+              const badgeColorClass = getBadgeColorForCity(city);
+              const dateRangeLabel = formatEventDateRangeLong(start, end, isAllDay);
               return (
                 <EventCard
                   key={event.id}
@@ -340,7 +431,9 @@ export default function Eventos() {
                   start={start}
                   isAllDay={isAllDay}
                   imageUrl={imageUrl}
-                  formatEventDateLong={formatEventDateLong}
+                  city={city}
+                  badgeColorClass={badgeColorClass}
+                  dateRangeLabel={dateRangeLabel}
                   formatTimeRange={formatTimeRange}
                 />
               );
