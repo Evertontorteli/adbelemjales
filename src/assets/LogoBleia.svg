@@ -62,9 +62,9 @@
 <path d="M142 209C141.67 209.66 141.34 210.32 141 211C137.37 210.67 133.74 210.34 130 210C130 209.67 130 209.34 130 209C138.571 207.714 138.571 207.714 142 209Z" fill="#E9DFD7"/>
 <path d="M200 114C200.33 114 200.66 114 201 114C201.25 120.625 201.25 120.625 199 124C197.75 117.375 197.75 117.375 200 114Z" fill="#CFB9A1"/>
 <defs>
-<linearGradient id="paint0_linear_1605_143" x1="215" y1="0" x2="215" y2="430" gradientUnits="userSpaceOnUse">
-<stop stop-color="#CFC8BF"/>
-<stop offset="0.633647" stop-color="#A59D91"/>
+<linearGradient id="paint0_linear_1605_143" x1="145.5" y1="25.5" x2="407.5" y2="539.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6F84A8"/>
+<stop offset="0.654771" stop-color="#3B4351"/>
 </linearGradient>
 </defs>
 </svg>
