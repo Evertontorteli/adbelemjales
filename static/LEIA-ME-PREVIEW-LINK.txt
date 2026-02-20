@@ -1,14 +1,22 @@
-PREVIEW AO COMPARTILHAR LINK (WhatsApp, etc.)
+PREVIEW AO COMPARTILHAR O SITE (WhatsApp, etc.)
 
-Para o link do site mostrar a logo da igreja quando alguém compartilha (como no YouTube),
-adicione uma imagem em:
+Para o link adbelemjales.com mostrar FOTO no preview (em vez de só texto), é obrigatório
+ter uma imagem em:
 
   static/logo-og.png
 
+Use a imagem de referência do site (logo circular + "AD BELÉM JALES" + "LUGAR DE CURA E RECOMEÇOS")
+ou qualquer arte que represente a igreja.
+
 Recomendações:
 - Formato: PNG ou JPG (WhatsApp não usa SVG no preview)
-- Tamanho sugerido: 1200 x 630 pixels (proporção de cartão)
-- Conteúdo: logo da igreja ou imagem de capa
+- Tamanho sugerido: 1200 x 630 pixels (proporção de cartão) – mínimo 300 px de largura
 - Tamanho do arquivo: até 600 KB
+
+Como adicionar:
+1. Salve ou exporte a arte (ex.: a imagem com logo + nome + tagline) como PNG ou JPG.
+2. Renomeie para logo-og.png (ou logo-og.jpg e atualize index.html nas meta og:image e twitter:image).
+3. Coloque o arquivo na pasta static/ do projeto.
+4. Faça deploy. O preview ao compartilhar adbelemjales.com passará a exibir a imagem.
 
 Se o domínio for outro, atualize as URLs em index.html nas meta tags og:image e twitter:image.
