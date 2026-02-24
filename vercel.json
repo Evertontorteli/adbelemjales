@@ -4,6 +4,10 @@
   "rewrites": [
     { "source": "/evento/(.*)", "destination": "/api/evento-preview?e=$1" },
     { "source": "/static/:path*", "destination": "/static/:path*" },
+    { "source": "/sw.js", "destination": "/sw.js" },
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    { "path": "/api/cron-push-reminders", "schedule": "*/15 * * * *" }
   ]
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Calendar as CalendarIcon, Loader2, AlertCircle } from 'lucide-react';
+import { Calendar as CalendarIcon, Loader2, AlertCircle, Bell, BellOff } from 'lucide-react';
 
 function WhatsAppIcon({ className }) {
   return (
@@ -10,6 +10,7 @@ function WhatsAppIcon({ className }) {
   );
 }
 import { GOOGLE_CALENDAR_API_KEY as API_KEY, GOOGLE_CALENDAR_ID as CALENDAR_ID } from '../config/calendar.js';
+import { isPushConfigured, VAPID_PUBLIC_KEY } from '../config/push.js';
 
 function isImageAttachment(att) {
   if (att.mimeType?.startsWith('image/')) return true;
@@ -301,6 +302,11 @@ export default function Eventos() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [pushSupported, setPushSupported] = useState(false);
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushLoading, setPushLoading] = useState(false);
+  const [pushError, setPushError] = useState(null);
+  const [swReg, setSwReg] = useState(null);
 
   const fetchEvents = useCallback(async () => {
     if (!API_KEY || !CALENDAR_ID) {
@@ -354,6 +360,74 @@ export default function Eventos() {
   useEffect(() => {
     fetchEvents();
   }, [fetchEvents]);
+
+  useEffect(() => {
+    if (!isPushConfigured || typeof window === 'undefined' || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+    setPushSupported(true);
+    navigator.serviceWorker.register(new URL('../sw.js', import.meta.url)).then((reg) => {
+      setSwReg(reg);
+      reg.pushManager.getSubscription().then((sub) => setPushSubscribed(!!sub));
+    }).catch(() => setPushSupported(false));
+  }, []);
+
+  const urlBase = typeof window !== 'undefined' ? window.location.origin : '';
+
+  const handlePushSubscribe = async () => {
+    if (!swReg || !VAPID_PUBLIC_KEY || pushSubscribed) return;
+    setPushError(null);
+    setPushLoading(true);
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        setPushError('Notificações foram bloqueadas.');
+        setPushLoading(false);
+        return;
+      }
+      const key = VAPID_PUBLIC_KEY.replace(/-/g, '+').replace(/_/g, '/');
+      const keyBytes = Uint8Array.from(atob(key), (c) => c.charCodeAt(0));
+      const sub = await swReg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: keyBytes,
+      });
+      const res = await fetch(`${urlBase}/api/push-subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subscription: sub.toJSON() }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setPushError(data.error || 'Erro ao ativar lembretes.');
+        return;
+      }
+      setPushSubscribed(true);
+    } catch (err) {
+      setPushError(err instanceof Error ? err.message : 'Erro ao ativar.');
+    } finally {
+      setPushLoading(false);
+    }
+  };
+
+  const handlePushUnsubscribe = async () => {
+    if (!swReg || !pushSubscribed) return;
+    setPushError(null);
+    setPushLoading(true);
+    try {
+      const sub = await swReg.pushManager.getSubscription();
+      if (sub) {
+        await fetch(`${urlBase}/api/push-unsubscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ subscription: sub.toJSON() }),
+        });
+        await sub.unsubscribe();
+      }
+      setPushSubscribed(false);
+    } catch (err) {
+      setPushError(err instanceof Error ? err.message : 'Erro ao desativar.');
+    } finally {
+      setPushLoading(false);
+    }
+  };
 
   const years = Array.from({ length: 5 }, (_, i) => now.getFullYear() - 2 + i);
   const [searchParams] = useSearchParams();
@@ -411,6 +485,40 @@ export default function Eventos() {
             </div>
           </div>
         </div>
+
+        {isPushConfigured && pushSupported && (
+          <div className="mb-6 mx-4 rounded-2xl border border-[#e5e7eb]/80 bg-white p-4 shadow-sm">
+            <p className="text-sm font-medium text-[#374151] mb-2">
+              Receba um lembrete no celular 1 hora antes de cada evento
+            </p>
+            {pushError && (
+              <p className="text-sm text-amber-600 mb-2" role="alert">{pushError}</p>
+            )}
+            {pushSubscribed ? (
+              <button
+                type="button"
+                onClick={handlePushUnsubscribe}
+                disabled={pushLoading}
+                className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#374151] border border-[#6b7280]/30 rounded-full px-4 py-2 text-sm font-medium transition-all shadow-sm"
+                aria-label="Desativar lembretes"
+              >
+                <BellOff className="w-4 h-4" />
+                {pushLoading ? 'Desativando…' : 'Desativar lembretes'}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handlePushSubscribe}
+                disabled={pushLoading}
+                className="inline-flex items-center gap-2 bg-[#374151] hover:bg-[#4b5563] text-white rounded-full px-4 py-2 text-sm font-medium transition-all shadow-sm disabled:opacity-70"
+                aria-label="Ativar lembretes 1 hora antes"
+              >
+                <Bell className="w-4 h-4" />
+                {pushLoading ? 'Ativando…' : 'Ativar lembretes'}
+              </button>
+            )}
+          </div>
+        )}
 
         {loading && (
           <div className="flex flex-col items-center justify-center gap-3 py-12">
