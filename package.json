@@ -52,6 +52,7 @@
             "react-router": "^7.13.0",
             "react-router-dom": "^6.22.0",
             "recharts": "^2.15.2",
+            "serve": "^14.2.4",
             "sonner": "^2.0.3",
             "tailwind-merge": "^3.4.1",
             "tailwindcss": "^4.2.0",
@@ -66,6 +67,7 @@
       "scripts": {
             "dev": "parcel index.html",
             "build": "parcel build index.html --dist-dir build",
+            "start": "serve build -s",
             "deploy:test": "vercel --prod"
       }
 }
